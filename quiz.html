@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>クイズ | 少女革命計画クイズ</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main>
+    <p><a href="index.html">← トップへ戻る</a></p>
+
+    <h1 class="site-title">少女革命計画クイズ</h1>
+
+    <section class="quiz-card">
+      <p id="quiz-progress" class="quiz-progress"></p>
+
+      <h2 id="question-text" class="question-text">読み込み中...</h2>
+
+      <img id="question-image" class="question-image" src="" alt="" hidden />
+
+      <div id="choices" class="choices"></div>
+
+      <div id="answer-area" class="answer-area" hidden>
+        <p id="answer-result" class="answer-result"></p>
+        <p id="explanation" class="explanation"></p>
+
+        <div id="source-links" class="source-links"></div>
+
+        <button id="next-button" class="next-button" type="button">
+          次の問題へ
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/questions.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>
