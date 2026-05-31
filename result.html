@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>結果 | 少女革命計画クイズ</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main>
+    <p><a href="index.html">← トップへ戻る</a></p>
+
+    <section class="result-card">
+      <h1 class="site-title">結果発表</h1>
+
+      <p id="result-score" class="result-score"></p>
+      <p id="result-title" class="result-title"></p>
+      <p id="result-message" class="lead"></p>
+
+      <div class="result-actions">
+        <a id="retry-link" class="mode-button" href="index.html">もう一度挑戦する</a>
+        <a id="share-link" class="mode-button" href="#" target="_blank" rel="noopener noreferrer">Xで結果を共有する</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const difficulty = params.get("difficulty") || "easy";
+    const score = Number(params.get("score") || 0);
+    const total = Number(params.get("total") || 0);
+
+    const difficultyLabels = {
+      easy: "Easy",
+      normal: "Normal",
+      hard: "Hard",
+      "革命": "革命"
+    };
+
+    const label = difficultyLabels[difficulty] || difficulty;
+    const rate = total > 0 ? score / total : 0;
+
+    const resultScore = document.getElementById("result-score");
+    const resultTitle = document.getElementById("result-title");
+    const resultMessage = document.getElementById("result-message");
+    const retryLink = document.getElementById("retry-link");
+    const shareLink = document.getElementById("share-link");
+
+    resultScore.textContent = `${label}：${total}問中 ${score}問 正解`;
+
+    if (rate === 1) {
+      resultTitle.textContent = "革命理解度MAX";
+      resultMessage.textContent = "全問正解！かなり深く観測しています。";
+    } else if (rate >= 0.7) {
+      resultTitle.textContent = "かなりの観測者";
+      resultMessage.textContent = "高得点です。少女革命計画への理解がかなり深いです。";
+    } else if (rate >= 0.4) {
+      resultTitle.textContent = "これからが楽しみ";
+      resultMessage.textContent = "気になる問題があったら、出典リンクからぜひ見に行ってみてください。";
+    } else {
+      resultTitle.textContent = "ここから革命開始";
+      resultMessage.textContent = "知らない問題が多くても大丈夫。気になった配信や楽曲から少しずつ触れてみてください。";
+    }
+
+    retryLink.href = `quiz.html?difficulty=${encodeURIComponent(difficulty)}`;
+
+    const shareText =
+      `少女革命計画クイズ ${label}で${total}問中${score}問正解！\n` +
+      `${resultTitle.textContent}\n` +
+      `#少女革命計画クイズ`;
+
+    const shareUrl =
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}` +
+      `&url=${encodeURIComponent(location.origin + location.pathname.replace("result.html", "index.html"))}`;
+
+    shareLink.href = shareUrl;
+  </script>
+</body>
+</html>
