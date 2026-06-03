@@ -7,35 +7,76 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <main>
-    <h1 class="site-title">少女革命計画クイズ</h1>
+  <main class="top-page">
+    <section class="hero">
+      <p class="site-kicker">2周年記念 非公式ファン企画</p>
+      <h1 class="site-title">少女革命計画クイズ</h1>
+      <p class="lead">
+        少女革命計画の配信・楽曲・エピソードをクイズで振り返るサイトです。
+        難易度を選んで、さっそく挑戦してみましょう。
+      </p>
+    </section>
 
-    <p class="lead">
-      2周年を記念して、少女革命計画の配信・楽曲・エピソードを振り返る非公式クイズサイトです。
-    </p>
+    <section class="section-block">
+      <h2 class="section-title">検定モード</h2>
+      <p class="section-description">
+        難易度ごとに用意された問題に挑戦します。
+      </p>
 
-    <ul class="mode-list">
-      <li>
-        <a class="mode-button" href="quiz.html?difficulty=easy">
-          Easy
+      <div class="mode-grid">
+        <a class="mode-card" href="quiz.html?difficulty=easy">
+          <span class="mode-label">Easy</span>
+          <span class="mode-text">最近知った人にもおすすめ</span>
         </a>
-      </li>
-      <li>
-        <a class="mode-button" href="quiz.html?difficulty=normal">
-          Normal
+
+        <a class="mode-card" href="quiz.html?difficulty=normal">
+          <span class="mode-label">Normal</span>
+          <span class="mode-text">ある程度追っている人向け</span>
         </a>
-      </li>
-      <li>
-        <a class="mode-button" href="quiz.html?difficulty=hard">
-          Hard
+
+        <a class="mode-card" href="quiz.html?difficulty=hard">
+          <span class="mode-label">Hard</span>
+          <span class="mode-text">深く観測している人向け</span>
         </a>
-      </li>
-      <li>
-        <a class="mode-button" href="quiz.html?difficulty=革命">
-          革命
+
+        <a class="mode-card mode-card-revolution" href="quiz.html?difficulty=革命">
+          <span class="mode-label">革命</span>
+          <span class="mode-text">自信のある人向け</span>
         </a>
-      </li>
-    </ul>
+      </div>
+    </section>
+
+    <section class="section-block sub-mode-area">
+      <h2 class="section-title">ほかの遊び方</h2>
+
+      <div class="sub-mode-grid">
+        <a class="sub-mode-card is-disabled" href="#" aria-disabled="true">
+          <span class="mode-label">ランダムモード</span>
+          <span class="mode-text">条件を選んでランダムに出題</span>
+          <span class="coming-soon">準備中</span>
+        </a>
+
+        <a class="sub-mode-card is-disabled" href="#" aria-disabled="true">
+          <span class="mode-label">問題一覧</span>
+          <span class="mode-text">問題を一覧から選んで遊ぶ</span>
+          <span class="coming-soon">準備中</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="notice-box">
+      <p>
+        本サイトはファンによる非公式企画です。公式・関係各所とは関係ありません。
+      </p>
+    </section>
+
+    <nav class="top-links" aria-label="関連リンク">
+      <a href="#">このサイトについて</a>
+      <a href="#">公式情報</a>
+      <a href="https://twitter.com/intent/tweet?text=%E5%B0%91%E5%A5%B3%E9%9D%A9%E5%91%BD%E8%A8%88%E7%94%BB%E3%82%AF%E3%82%A4%E3%82%BA%0A%23%E5%B0%91%E5%A5%B3%E9%9D%A9%E5%91%BD%E8%A8%88%E7%94%BB%E3%82%AF%E3%82%A4%E3%82%BA" target="_blank" rel="noopener noreferrer">
+        Xで共有
+      </a>
+    </nav>
   </main>
 </body>
 </html>
