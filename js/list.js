@@ -167,7 +167,7 @@ function renderList() {
   }
 
   filteredQuestions.forEach(question => {
-    questionList.appendChild(createQuestionCard(question));
+    questionList.appendChild((question));
   });
 }
 
@@ -219,44 +219,72 @@ function createQuestionCard(question) {
     body.appendChild(image);
   }
 
-  const choices = document.createElement("ol");
-  choices.className = "list-choices";
+  const choices = document.createElement("div");
+  choices.className = "list-choice-buttons";
 
-  question.choices.forEach((choice, index) => {
-    const li = document.createElement("li");
-    li.textContent = choice;
+  const resultArea = document.createElement("div");
+  resultArea.className = "list-result-area";
+  resultArea.hidden = true;
 
-    if (index === question.answerIndex) {
-      li.className = "is-correct-answer";
-    }
-
-    choices.appendChild(li);
-  });
-
-  body.appendChild(choices);
-
-  const answer = document.createElement("p");
-  answer.className = "list-answer";
-  answer.textContent = `正解：${question.choices[question.answerIndex]}`;
-  body.appendChild(answer);
+  const resultText = document.createElement("p");
+  resultText.className = "answer-result";
 
   const explanation = document.createElement("p");
   explanation.className = "list-explanation";
-  explanation.textContent = question.explanation || "";
-  body.appendChild(explanation);
 
-  if (question.contributor) {
-    const contributor = document.createElement("p");
-    contributor.className = "list-contributor";
-    contributor.textContent = `作問：${question.contributor}`;
-    body.appendChild(contributor);
-  }
+  const contributor = document.createElement("p");
+  contributor.className = "list-contributor";
 
   const links = createSourceLinks(question);
+
+  question.choices.forEach((choice, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "choice-button";
+    button.textContent = choice;
+
+    button.addEventListener("click", () => {
+      const isCorrect = index === question.answerIndex;
+      const buttons = choices.querySelectorAll(".choice-button");
+
+      buttons.forEach((choiceButton, choiceIndex) => {
+        choiceButton.disabled = true;
+
+        if (choiceIndex === question.answerIndex) {
+          choiceButton.classList.add("is-correct");
+        }
+
+        if (choiceIndex === index && !isCorrect) {
+          choiceButton.classList.add("is-wrong");
+        }
+      });
+
+      resultText.textContent = isCorrect ? "正解！" : "不正解";
+      explanation.textContent = question.explanation || "";
+
+      if (question.contributor) {
+        contributor.textContent = `作問：${question.contributor}`;
+        contributor.hidden = false;
+      } else {
+        contributor.hidden = true;
+      }
+
+      resultArea.hidden = false;
+    });
+
+    choices.appendChild(button);
+  });
+
+  resultArea.appendChild(resultText);
+  resultArea.appendChild(explanation);
+  resultArea.appendChild(contributor);
+
   if (links) {
-    body.appendChild(links);
+    resultArea.appendChild(links);
   }
 
+  body.appendChild(choices);
+  body.appendChild(resultArea);
   details.appendChild(body);
 
   return details;
