@@ -851,3 +851,20 @@ a {
     display: grid;
   }
 }
+
+.list-choice-buttons {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.list-result-area {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.list-result-area[hidden] {
+  display: none;
+}
