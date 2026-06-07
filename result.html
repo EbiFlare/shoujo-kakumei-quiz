@@ -3,23 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>結果 | 少女革命計画クイズ</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>結果 | がるれぼ横断ウルトラクイズ！</title>
+  <link rel="stylesheet" href="css/style.css?v=20" />
 </head>
 <body>
-  <main>
-    <p><a href="index.html">← トップへ戻る</a></p>
+  <main class="result-page">
+    <header class="page-header">
+      <a class="back-link" href="index.html">← トップへ戻る</a>
+
+      <div class="page-title-area">
+        <p class="site-kicker">検定結果</p>
+        <h1 class="site-title">がるれぼ横断ウルトラクイズ！</h1>
+      </div>
+    </header>
 
     <section class="result-card">
-      <h1 class="site-title">結果発表</h1>
+      <p id="result-mode" class="result-mode"></p>
 
-      <p id="result-score" class="result-score"></p>
+      <div class="score-circle">
+        <span id="score-main" class="score-main"></span>
+        <span id="score-sub" class="score-sub"></span>
+      </div>
+
       <p id="result-title" class="result-title"></p>
-      <p id="result-message" class="lead"></p>
+      <p id="result-message" class="result-message"></p>
+
+      <div id="unlock-message" class="unlock-message" hidden>
+        <span class="unlock-icon">🔓</span>
+        <span>問題一覧が解放されました！</span>
+      </div>
 
       <div class="result-actions">
-        <a id="retry-link" class="mode-button" href="index.html">もう一度挑戦する</a>
-        <a id="share-link" class="mode-button" href="#" target="_blank" rel="noopener noreferrer">Xで結果を共有する</a>
+        <a id="share-link" class="result-button primary-button" href="#" target="_blank" rel="noopener noreferrer">
+          Xで結果を共有する
+        </a>
+
+        <a id="retry-link" class="result-button" href="index.html">
+          もう一度挑戦する
+        </a>
+
+        <a id="list-link" class="result-button" href="list.html" hidden>
+          問題一覧を見る
+        </a>
+
+        <a class="result-button subtle-button" href="index.html">
+          トップへ戻る
+        </a>
       </div>
     </section>
   </main>
@@ -40,47 +69,58 @@
 
     const label = difficultyLabels[difficulty] || difficulty;
     const rate = total > 0 ? score / total : 0;
+
     if (difficulty === "hard" && total > 0 && score === total) {
       localStorage.setItem("quizListUnlocked", "true");
     }
 
-    const resultScore = document.getElementById("result-score");
+    const resultMode = document.getElementById("result-mode");
+    const scoreMain = document.getElementById("score-main");
+    const scoreSub = document.getElementById("score-sub");
     const resultTitle = document.getElementById("result-title");
     const resultMessage = document.getElementById("result-message");
+    const unlockMessage = document.getElementById("unlock-message");
     const retryLink = document.getElementById("retry-link");
     const shareLink = document.getElementById("share-link");
+    const listLink = document.getElementById("list-link");
 
-    resultScore.textContent = `${label}：${total}問中 ${score}問 正解`;
+    resultMode.textContent = `${label} 検定`;
+    scoreMain.textContent = `${score}`;
+    scoreSub.textContent = `/ ${total}`;
 
     if (rate === 1) {
       resultTitle.textContent = "革命理解度MAX";
 
       if (difficulty === "hard") {
         resultMessage.textContent = "Hard検定 全問正解！問題一覧が解放されました。";
+        unlockMessage.hidden = false;
+        listLink.hidden = false;
       } else {
         resultMessage.textContent = "全問正解！かなり深く観測しています。";
       }
     } else if (rate >= 0.7) {
-      resultTitle.textContent = "かなりの観測者";
+      resultTitle.textContent = "かなりの改変者";
       resultMessage.textContent = "高得点です。少女革命計画への理解がかなり深いです。";
     } else if (rate >= 0.4) {
       resultTitle.textContent = "これからが楽しみ";
-      resultMessage.textContent = "気になる問題があったら、出典リンクからぜひ見に行ってみてください。";
+      resultMessage.textContent = "気になる問題があったら、出典リンクからぜひ見に行ってみてください♪";
     } else {
       resultTitle.textContent = "ここから革命開始";
-      resultMessage.textContent = "知らない問題が多くても大丈夫。気になった配信や楽曲から少しずつ触れてみてください。";
+      resultMessage.textContent = "知らない問題が多くても大丈夫。気になった配信や楽曲から少しずつ触れてみてください♪";
     }
 
     retryLink.href = `quiz.html?difficulty=${encodeURIComponent(difficulty)}`;
 
     const shareText =
-      `少女革命計画クイズ ${label}で${total}問中${score}問正解！\n` +
+      `がるれぼ横断ウルトラクイズ！ ${label}検定で${total}問中${score}問正解！\n` +
       `${resultTitle.textContent}\n` +
-      `#少女革命計画クイズ`;
+      `#がるれぼ横断ウルトラクイズ`;
+
+    const topUrl = location.origin + location.pathname.replace("result.html", "index.html");
 
     const shareUrl =
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}` +
-      `&url=${encodeURIComponent(location.origin + location.pathname.replace("result.html", "index.html"))}`;
+      `&url=${encodeURIComponent(topUrl)}`;
 
     shareLink.href = shareUrl;
   </script>
