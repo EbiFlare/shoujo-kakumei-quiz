@@ -19,5 +19,20 @@
       </p>
     </section>
   </main>
+
+  <script>
+    const unlocked = localStorage.getItem("quizListUnlocked") === "true";
+    if (!unlocked) {
+      const input = prompt("問題一覧を開くには専用コードを入力してください。");
+
+      if (input === "REVOLUTION") {
+        localStorage.setItem("quizListUnlocked", "true");
+      } else {
+        alert("問題一覧はHard検定を全問正解すると解放されます。");
+        location.href = "index.html";
+      }
+    }
+  </script>
+  
 </body>
 </html>
