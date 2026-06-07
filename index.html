@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>少女革命計画クイズ</title>
+  <title>がるれぼ横断ウルトラクイズ！</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <main class="top-page">
     <section class="hero">
       <p class="site-kicker">2周年記念 非公式ファン企画</p>
-      <h1 class="site-title">少女革命計画クイズ</h1>
+      <h1 class="site-title">がるれぼ横断ウルトラクイズ！</h1>
       <p class="lead">
         少女革命計画の配信・楽曲・エピソードをクイズで振り返るサイトです。
         難易度を選んで、さっそく挑戦してみましょう。
@@ -18,7 +18,7 @@
     </section>
 
     <section class="section-block">
-      <h2 class="section-title">検定モード</h2>
+      <h2 class="section-title">がるれぼ検定</h2>
       <p class="section-description">
         難易度ごとに用意された問題に挑戦します。
       </p>
@@ -47,26 +47,26 @@
     </section>
 
     <section class="section-block sub-mode-area">
-      <h2 class="section-title">ほかの遊び方</h2>
+      <!-- <h2 class="section-title">ほかの遊び方</h2> -->
 
       <div class="sub-mode-grid">
         <a class="sub-mode-card is-disabled" href="#" aria-disabled="true">
-          <span class="mode-label">ランダムモード</span>
-          <span class="mode-text">条件を選んでランダムに出題</span>
+          <span class="mode-label">ウルトラクイズラッシュ</span>
+          <span class="mode-text">条件を選んで全問題からランダムに出題</span>
           <span class="coming-soon">準備中</span>
         </a>
 
-        <a class="sub-mode-card is-disabled" href="#" aria-disabled="true">
+        <button class="sub-mode-card list-unlock-button" id="list-button" type="button">
           <span class="mode-label">問題一覧</span>
-          <span class="mode-text">問題を一覧から選んで遊ぶ</span>
-          <span class="coming-soon">準備中</span>
-        </a>
+          <span class="mode-text">検定Hardを全問正解すると解放されます</span>
+          <span class="coming-soon">コード入力でも解放可能</span>
+        </button>
       </div>
     </section>
 
     <section class="notice-box">
       <p>
-        本サイトはファンによる非公式企画です。公式・関係各所とは関係ありません。
+        本サイトは六方のbouket(X ID:@grp_cheer)による非公式企画です。公式・関係各所とは関係ありません。
       </p>
     </section>
 
@@ -78,5 +78,34 @@
       </a>
     </nav>
   </main>
+
+  <script>
+      const LIST_UNLOCK_CODE = "REVOLUTION";
+      const listButton = document.getElementById("list-button");
+
+      listButton.addEventListener("click", () => {
+        const unlocked = localStorage.getItem("quizListUnlocked") === "true";
+
+        if (unlocked) {
+          location.href = "list.html";
+          return;
+        }
+
+        const input = prompt("革命を起こす");
+
+        if (input === null) {
+          return;
+        }
+
+        if (input.trim() === LIST_UNLOCK_CODE) {
+          localStorage.setItem("quizListUnlocked", "true");
+          alert("問題一覧を解放しました");
+          location.href = "list.html";
+        } else {
+          alert("コードが違います");
+        }
+      });
+    </script>
+  
 </body>
 </html>
