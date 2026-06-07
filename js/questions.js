@@ -326,6 +326,29 @@ const QUESTIONS = [
     "examOrder": 4
   },
   {
+    "id": "q014",
+    "contributor": "えびフレア",
+    "date": "",
+    "question": "佳鏡院が嫌いなものは？",
+    "choices": [
+      "豆腐",
+      "チョコ",
+      "犬",
+      "人間"
+    ],
+    "answerIndex": 3,
+    "sourceUrls": [],
+    "image": "",
+    "members": [
+      "佳鏡院"
+    ],
+    "difficulty": "easy",
+    "genre": "配信",
+    "explanation": "身内以外の人間が嫌いです。",
+    "exam": "easy",
+    "examOrder": 4
+  },
+  {
     "id": "q015",
     "contributor": "えびフレア",
     "date": "",
@@ -499,5 +522,28 @@ const QUESTIONS = [
     "explanation": "氷夏至は学園ハンサムやパーフェクト城之内のような尖った顎が大好き。",
     "exam": "easy",
     "examOrder": 9
+  },
+  {
+    "id": "q034",
+    "contributor": "ダミー",
+    "date": "",
+    "question": "test",
+    "choices": [
+      "test1",
+      "test2",
+      "test3",
+      "test4"
+    ],
+    "answerIndex": 0,
+    "sourceUrls": [],
+    "image": "",
+    "members": [
+      "夕凪機"
+    ],
+    "difficulty": "easy",
+    "genre": "",
+    "explanation": "test",
+    "exam": "easy",
+    "examOrder": 10
   }
 ];
