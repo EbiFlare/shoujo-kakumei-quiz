@@ -7,13 +7,22 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <main>
-    <p><a href="index.html">← トップへ戻る</a></p>
+  <main class="quiz-page">
+    <header class="page-header">
+      <a class="back-link" href="index.html">← トップへ戻る</a>
 
-    <h1 class="site-title">少女革命計画クイズ</h1>
+      <div class="page-title-area">
+        <p class="site-kicker">検定モード</p>
+        <h1 class="site-title">少女革命計画クイズ</h1>
+        <p id="mode-title" class="mode-title"></p>
+      </div>
+    </header>
 
     <section class="quiz-card">
-      <p id="quiz-progress" class="quiz-progress"></p>
+      <div class="quiz-top">
+        <p id="quiz-progress" class="quiz-progress"></p>
+        <div id="question-meta" class="question-meta"></div>
+      </div>
 
       <h2 id="question-text" class="question-text">読み込み中...</h2>
 
@@ -34,7 +43,7 @@
     </section>
   </main>
 
-  <script src="js/questions.js"></script>
-  <script src="js/quiz.js"></script>
+  <script src="js/questions.js?v=10"></script>
+  <script src="js/quiz.js?v=10"></script>
 </body>
 </html>
