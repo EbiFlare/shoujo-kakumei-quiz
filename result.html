@@ -40,6 +40,9 @@
 
     const label = difficultyLabels[difficulty] || difficulty;
     const rate = total > 0 ? score / total : 0;
+    if (difficulty === "hard" && total > 0 && score === total) {
+      localStorage.setItem("quizListUnlocked", "true");
+    }
 
     const resultScore = document.getElementById("result-score");
     const resultTitle = document.getElementById("result-title");
@@ -51,7 +54,12 @@
 
     if (rate === 1) {
       resultTitle.textContent = "革命理解度MAX";
-      resultMessage.textContent = "全問正解！かなり深く観測しています。";
+
+      if (difficulty === "hard") {
+        resultMessage.textContent = "Hard検定 全問正解！問題一覧が解放されました。";
+      } else {
+        resultMessage.textContent = "全問正解！かなり深く観測しています。";
+      }
     } else if (rate >= 0.7) {
       resultTitle.textContent = "かなりの観測者";
       resultMessage.textContent = "高得点です。少女革命計画への理解がかなり深いです。";
