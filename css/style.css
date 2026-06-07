@@ -327,3 +327,14 @@ a {
     border-radius: 18px;
   }
 }
+
+.list-unlock-button {
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.list-unlock-button:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.18);
+}
