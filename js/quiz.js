@@ -104,7 +104,7 @@ function showChoices(question) {
 }
 
 function selectAnswer(selectedIndex) {
-  const question = filteredQuestions[];
+  const question = filteredQuestions[currentIndex];
   const buttons = choicesArea.querySelectorAll(".choice-button");
   const isCorrect = selectedIndex === question.answerIndex;
 
