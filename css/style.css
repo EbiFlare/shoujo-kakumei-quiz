@@ -338,3 +338,144 @@ a {
   transform: translateY(-3px);
   background: rgba(255, 255, 255, 0.18);
 }
+
+.quiz-page {
+  max-width: 920px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  opacity: 0.82;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.page-title-area {
+  text-align: center;
+}
+
+.mode-title {
+  margin: 8px 0 0;
+  font-size: 1.1rem;
+  opacity: 0.86;
+}
+
+.quiz-card {
+  padding: clamp(20px, 4vw, 36px);
+}
+
+.quiz-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.question-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  line-height: 1.2;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.92;
+}
+
+.question-text {
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.choices {
+  margin-top: 24px;
+}
+
+.choice-button {
+  position: relative;
+  padding-left: 52px;
+}
+
+.choice-button::before {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-50%);
+}
+
+.choice-button:nth-child(1)::before {
+  content: "1";
+}
+
+.choice-button:nth-child(2)::before {
+  content: "2";
+}
+
+.choice-button:nth-child(3)::before {
+  content: "3";
+}
+
+.choice-button:nth-child(4)::before {
+  content: "4";
+}
+
+.answer-area {
+  border-radius: 18px;
+  padding: 22px;
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.answer-result {
+  font-size: 1.6rem;
+}
+
+.source-link {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+@media (max-width: 640px) {
+  .page-title-area {
+    text-align: left;
+  }
+
+  .quiz-top {
+    display: block;
+  }
+
+  .question-meta {
+    justify-content: flex-start;
+    margin-top: 12px;
+  }
+
+  .choice-button {
+    padding-left: 48px;
+  }
+}
