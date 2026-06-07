@@ -3,36 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>問題一覧 | 少女革命計画クイズ</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>問題一覧 | がるれぼ横断ウルトラクイズ！</title>
+  <link rel="stylesheet" href="css/style.css?v=30" />
 </head>
 <body>
-  <main>
-    <p><a href="index.html">← トップへ戻る</a></p>
+  <main class="list-page">
+    <header class="page-header">
+      <a class="back-link" href="index.html">← トップへ戻る</a>
 
-    <h1 class="site-title">問題一覧</h1>
+      <div class="page-title-area">
+        <p class="site-kicker">解放コンテンツ</p>
+        <h1 class="site-title">問題一覧</h1>
+        <p class="lead">
+          登録されている問題を一覧から確認できます。条件で絞り込んで、気になる問題を開いてみてください。
+        </p>
+      </div>
+    </header>
 
-    <section class="quiz-card">
+    <section id="list-lock" class="list-lock-card" hidden>
+      <h2>問題一覧はロックされています</h2>
       <p>
-        <br>
-        ここに全問題の一覧を表示する予定です。
+        Hard検定を全問正解すると解放されます。<br>
+        専用コードを持っている場合は、コード入力でも開けます。
       </p>
+
+      <div class="unlock-form">
+        <input id="unlock-code-input" type="text" placeholder="専用コードを入力" />
+        <button id="unlock-code-button" type="button">解放する</button>
+      </div>
+
+      <p id="unlock-error" class="unlock-error" hidden>コードが違います。</p>
+    </section>
+
+    <section id="list-content" hidden>
+      <section class="filter-card">
+        <div class="filter-grid">
+          <label>
+            難易度
+            <select id="difficulty-filter">
+              <option value="">すべて</option>
+            </select>
+          </label>
+
+          <label>
+            メンバー
+            <select id="member-filter">
+              <option value="">すべて</option>
+            </select>
+          </label>
+
+          <label>
+            ジャンル
+            <select id="genre-filter">
+              <option value="">すべて</option>
+            </select>
+          </label>
+
+          <label>
+            キーワード
+            <input id="keyword-filter" type="search" placeholder="問題文・解説を検索" />
+          </label>
+        </div>
+
+        <div class="filter-actions">
+          <p id="list-count" class="list-count"></p>
+          <button id="reset-filter-button" class="small-button" type="button">条件をリセット</button>
+        </div>
+      </section>
+
+      <section id="question-list" class="question-list"></section>
     </section>
   </main>
 
-  <script>
-    const unlocked = localStorage.getItem("quizListUnlocked") === "true";
-    if (!unlocked) {
-      const input = prompt("問題一覧を開くには専用コードを入力してください。");
-
-      if (input === "REVOLUTION") {
-        localStorage.setItem("quizListUnlocked", "true");
-      } else {
-        alert("問題一覧はHard検定を全問正解すると解放されます。");
-        location.href = "index.html";
-      }
-    }
-  </script>
-  
+  <script src="js/questions.js?v=30"></script>
+  <script src="js/list.js?v=30"></script>
 </body>
 </html>
