@@ -631,3 +631,7 @@ a {
     height: min(220px, 72vw);
   }
 }
+
+.unlock-message[hidden] {
+  display: none;
+}
