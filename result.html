@@ -70,7 +70,11 @@
     const label = difficultyLabels[difficulty] || difficulty;
     const rate = total > 0 ? score / total : 0;
 
-    if (difficulty === "hard" && total > 0 && score === total) {
+    const wasListUnlocked = localStorage.getItem("quizListUnlocked") === "true";
+    const isHardPerfect = difficulty === "hard" && total > 0 && score === total;
+    const isListUnlockedNow = isHardPerfect && !wasListUnlocked;
+
+    if (isHardPerfect) {
       localStorage.setItem("quizListUnlocked", "true");
     }
 
@@ -91,13 +95,20 @@
     if (rate === 1) {
       resultTitle.textContent = "革命理解度MAX";
 
-      if (difficulty === "hard") {
+    if (difficulty === "hard") {
+      if (isListUnlockedNow) {
         resultMessage.textContent = "Hard検定 全問正解！問題一覧が解放されました。";
         unlockMessage.hidden = false;
-        listLink.hidden = false;
       } else {
-        resultMessage.textContent = "全問正解！かなり深く観測しています。";
+        resultMessage.textContent = "Hard検定 全問正解！問題一覧はすでに解放済みです。";
+        unlockMessage.hidden = true;
       }
+
+      listLink.hidden = false;
+    } else {
+      resultMessage.textContent = "全問正解！かなり深く観測しています。";
+    }  
+      
     } else if (rate >= 0.7) {
       resultTitle.textContent = "かなりの改変者";
       resultMessage.textContent = "高得点です。少女革命計画への理解がかなり深いです。";
