@@ -12,7 +12,7 @@ const QUESTIONS = [
     ],
     "answerIndex": 0,
     "sourceUrls": [
-      "https://youtu.be/cZz-GuWiNnA?si=DlvRuhJuZ34dtL1U"
+      "https://youtu.be/XhXkkh_4cVs?si=WGpvMt_30lFWujxa"
     ],
     "image": "",
     "members": [
@@ -20,7 +20,9 @@ const QUESTIONS = [
     ],
     "difficulty": "easy",
     "genre": "楽曲",
-    "explanation": "雑記帳（ざっきちょう）とは、一般には他人が読んでも構わない程度の個人の感想や意見などを記載するものである。"
+    "explanation": "雑記帳（ざっきちょう）とは、一般には他人が読んでも構わない程度の個人の感想や意見などを記載するものである。",
+    "exam": "easy",
+    "examOrder": 1
   },
   {
     "id": "q002",
@@ -43,7 +45,9 @@ const QUESTIONS = [
     ],
     "difficulty": "normal",
     "genre": "楽曲",
-    "explanation": "和訳では「私を見つけて、連れ出して」。FINDME STOREはご存じ株式会社THINKRのECサイト。"
+    "explanation": "和訳では「私を見つけて、連れ出して」。FINDME STOREはご存じ株式会社THINKRのECサイト。",
+    "exam": "normal",
+    "examOrder": 1
   },
   {
     "id": "q003",
@@ -66,7 +70,9 @@ const QUESTIONS = [
     ],
     "difficulty": "easy",
     "genre": "配信",
-    "explanation": "佳鏡院は画伯です。"
+    "explanation": "佳鏡院は画伯です。",
+    "exam": "easy",
+    "examOrder": 2
   },
   {
     "id": "q004",
@@ -90,7 +96,9 @@ const QUESTIONS = [
     ],
     "difficulty": "normal",
     "genre": "楽曲",
-    "explanation": "他に御莉姫の楽曲『Talking Doll』やV.W.Pの楽曲『真偽』なども手掛けている。"
+    "explanation": "他に御莉姫の楽曲『Talking Doll』やV.W.Pの楽曲『真偽』なども手掛けている。",
+    "exam": "normal",
+    "examOrder": 2
   },
   {
     "id": "q005",
@@ -113,7 +121,9 @@ const QUESTIONS = [
     ],
     "difficulty": "normal",
     "genre": "楽曲",
-    "explanation": "『DIGGER』作詞,作曲,編曲：biz・ZERA"
+    "explanation": "『DIGGER』作詞,作曲,編曲：biz・ZERA",
+    "exam": "normal",
+    "examOrder": 3
   },
   {
     "id": "q006",
@@ -136,7 +146,9 @@ const QUESTIONS = [
     ],
     "difficulty": "hard",
     "genre": "楽曲",
-    "explanation": "当時は活動初期だったこともあり楽曲リリースが一大イベントとして扱われていた。"
+    "explanation": "当時は活動初期だったこともあり楽曲リリースが一大イベントとして扱われていた。",
+    "exam": "hard",
+    "examOrder": 1
   },
   {
     "id": "q007",
@@ -159,7 +171,9 @@ const QUESTIONS = [
     ],
     "difficulty": "hard",
     "genre": "IBA",
-    "explanation": "注文したメニューはヴィッテの爆釣♡ぷりん㌨！。"
+    "explanation": "注文したメニューはヴィッテの爆釣♡ぷりん㌨！。",
+    "exam": "hard",
+    "examOrder": 2
   },
   {
     "id": "q008",
@@ -182,7 +196,9 @@ const QUESTIONS = [
     ],
     "difficulty": "革命",
     "genre": "イベント",
-    "explanation": "アホ毛単体は5cmあるため加味すると身長160cm。"
+    "explanation": "アホ毛単体は5cmあるため加味すると身長160cm。",
+    "exam": "革命",
+    "examOrder": 1
   },
   {
     "id": "q009",
@@ -205,7 +221,9 @@ const QUESTIONS = [
     ],
     "difficulty": "革命",
     "genre": "",
-    "explanation": "夕凪機が食べていたチーかまは35kcal、なとり35kcal、丸善53kcal、ニッスイ28kcal、美幸は存在しません。"
+    "explanation": "夕凪機が食べていたチーかまは35kcal、なとり35kcal、丸善53kcal、ニッスイ28kcal、美幸は存在しません。",
+    "exam": "革命",
+    "examOrder": 2
   },
   {
     "id": "q010",
@@ -228,7 +246,9 @@ const QUESTIONS = [
     ],
     "difficulty": "革命",
     "genre": "歌ってみた",
-    "explanation": "12種のイラスト差分に番号が振られて並んでいるシーンで11番が飛んでいる。(原曲のMVでは11番が存在する)"
+    "explanation": "12種のイラスト差分に番号が振られて並んでいるシーンで11番が飛んでいる。(原曲のMVでは11番が存在する)",
+    "exam": "革命",
+    "examOrder": 3
   },
   {
     "id": "q011",
@@ -251,7 +271,9 @@ const QUESTIONS = [
     ],
     "difficulty": "hard",
     "genre": "SNS",
-    "explanation": "フォローといいね、よろしくお願いします。"
+    "explanation": "フォローといいね、よろしくお願いします。",
+    "exam": "hard",
+    "examOrder": 3
   },
   {
     "id": "q012",
@@ -274,7 +296,9 @@ const QUESTIONS = [
     ],
     "difficulty": "easy",
     "genre": "SNS",
-    "explanation": "最初におやちゅみやがポストされたのは2025年7月7日。"
+    "explanation": "最初におやちゅみやがポストされたのは2025年7月7日。",
+    "exam": "easy",
+    "examOrder": 3
   },
   {
     "id": "q013",
@@ -297,7 +321,9 @@ const QUESTIONS = [
     ],
     "difficulty": "hard",
     "genre": "SNS",
-    "explanation": "weiboだけで公開されている情報もあるとか、ないとか。"
+    "explanation": "weiboだけで公開されている情報もあるとか、ないとか。",
+    "exam": "hard",
+    "examOrder": 4
   },
   {
     "id": "q015",
@@ -320,7 +346,9 @@ const QUESTIONS = [
     ],
     "difficulty": "hard",
     "genre": "歌ってみた",
-    "explanation": "ジュウナナ！のウナナ！の部分、カワイイですよね。"
+    "explanation": "ジュウナナ！のウナナ！の部分、カワイイですよね。",
+    "exam": "hard",
+    "examOrder": 5
   },
   {
     "id": "q017",
@@ -343,7 +371,9 @@ const QUESTIONS = [
     ],
     "difficulty": "easy",
     "genre": "歌ってみた",
-    "explanation": "佳鏡院『炜WARD ROMANCE』159万回再生、氷夏至『不埒な喝采』60万回再生、美古途『ピルグリム』57万回再生、氷夏至『でもね』56万回再生"
+    "explanation": "佳鏡院『炜WARD ROMANCE』159万回再生、氷夏至『不埒な喝采』60万回再生、美古途『ピルグリム』57万回再生、氷夏至『でもね』56万回再生",
+    "exam": "easy",
+    "examOrder": 5
   },
   {
     "id": "q019",
@@ -366,7 +396,9 @@ const QUESTIONS = [
     ],
     "difficulty": "easy",
     "genre": "ライブ",
-    "explanation": "Xtuberという形態で活動することが明かされていなかった心世紀。誰もが予想していなかったリアルの姿でのパフォーマンスは観客を大きく盛り上げた。"
+    "explanation": "Xtuberという形態で活動することが明かされていなかった心世紀。誰もが予想していなかったリアルの姿でのパフォーマンスは観客を大きく盛り上げた。",
+    "exam": "easy",
+    "examOrder": 6
   },
   {
     "id": "q020",
@@ -389,7 +421,9 @@ const QUESTIONS = [
     ],
     "difficulty": "easy",
     "genre": "歌ってみた",
-    "explanation": "IBAコラボや心世紀の振り付け担当など少女革命計画とVALISは関わりが何かと多い。"
+    "explanation": "IBAコラボや心世紀の振り付け担当など少女革命計画とVALISは関わりが何かと多い。",
+    "exam": "easy",
+    "examOrder": 7
   },
   {
     "id": "q021",
@@ -412,7 +446,9 @@ const QUESTIONS = [
     ],
     "difficulty": "easy",
     "genre": "",
-    "explanation": "きっと情熱も燃やしてくれてる。"
+    "explanation": "きっと情熱も燃やしてくれてる。",
+    "exam": "easy",
+    "examOrder": 8
   },
   {
     "id": "q031",
@@ -435,7 +471,9 @@ const QUESTIONS = [
     ],
     "difficulty": "normal",
     "genre": "配信",
-    "explanation": "フェスにて、美古途が夕凪機に対して「『ゆうなぎ』って『うなぎ』入ってるよね」と言い、うなぎ呼びが始まった。"
+    "explanation": "フェスにて、美古途が夕凪機に対して「『ゆうなぎ』って『うなぎ』入ってるよね」と言い、うなぎ呼びが始まった。",
+    "exam": "normal",
+    "examOrder": 6
   },
   {
     "id": "q032",
@@ -458,6 +496,8 @@ const QUESTIONS = [
     ],
     "difficulty": "easy",
     "genre": "配信",
-    "explanation": "氷夏至は学園ハンサムやパーフェクト城之内のような尖った顎が大好き。"
+    "explanation": "氷夏至は学園ハンサムやパーフェクト城之内のような尖った顎が大好き。",
+    "exam": "easy",
+    "examOrder": 9
   }
 ];
