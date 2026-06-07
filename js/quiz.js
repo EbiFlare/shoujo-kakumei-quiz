@@ -14,9 +14,9 @@ const nextButton = document.getElementById("next-button");
 let currentIndex = 0;
 let score = 0;
 
-const filteredQuestions = QUESTIONS.filter(
-  question => question.difficulty === currentDifficulty
-);
+const filteredQuestions = QUESTIONS
+  .filter(question => question.exam === currentDifficulty)
+  .sort((a, b) => Number(a.examOrder) - Number(b.examOrder));
 
 if (filteredQuestions.length === 0) {
   showNoQuestions();
@@ -26,7 +26,7 @@ if (filteredQuestions.length === 0) {
 
 function showNoQuestions() {
   quizProgress.textContent = "";
-  questionText.textContent = "この難易度の問題はまだありません。";
+  questionText.textContent = "この検定の問題はまだ設定されていません。";
   questionImage.hidden = true;
   choicesArea.innerHTML = "";
   answerArea.hidden = true;
