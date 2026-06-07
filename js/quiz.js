@@ -2,6 +2,8 @@ const params = new URLSearchParams(window.location.search);
 const currentDifficulty = params.get("difficulty") || "easy";
 
 const quizProgress = document.getElementById("quiz-progress");
+const modeTitle = document.getElementById("mode-title");
+const questionMeta = document.getElementById("question-meta");
 const questionText = document.getElementById("question-text");
 const questionImage = document.getElementById("question-image");
 const choicesArea = document.getElementById("choices");
@@ -13,6 +15,15 @@ const nextButton = document.getElementById("next-button");
 
 let currentIndex = 0;
 let score = 0;
+
+const difficultyLabels = {
+  easy: "Easy",
+  normal: "Normal",
+  hard: "Hard",
+  "革命": "革命"
+};
+
+modeTitle.textContent = `${difficultyLabels[currentDifficulty] || currentDifficulty} 検定`;
 
 const filteredQuestions = QUESTIONS
   .filter(question => question.exam === currentDifficulty)
@@ -35,9 +46,10 @@ function showNoQuestions() {
 function showQuestion() {
   const question = filteredQuestions[currentIndex];
 
-  quizProgress.textContent = `${currentIndex + 1} / ${filteredQuestions.length}`;
+  quizProgress.textContent = `Q${currentIndex + 1} / ${filteredQuestions.length}`;
   questionText.textContent = question.question;
 
+  showMeta(question);
   showImage(question);
   showChoices(question);
 
@@ -59,6 +71,24 @@ function showImage(question) {
   }
 }
 
+function showMeta(question) {
+  questionMeta.innerHTML = "";
+
+  const metaItems = [
+    difficultyLabels[question.difficulty] || question.difficulty,
+    question.genre,
+    ...(question.members || []),
+    question.contributor ? `作問：${question.contributor}` : ""
+  ].filter(Boolean);
+
+  metaItems.forEach(item => {
+    const span = document.createElement("span");
+    span.className = "meta-chip";
+    span.textContent = item;
+    questionMeta.appendChild(span);
+  });
+}
+
 function showChoices(question) {
   choicesArea.innerHTML = "";
 
@@ -74,7 +104,7 @@ function showChoices(question) {
 }
 
 function selectAnswer(selectedIndex) {
-  const question = filteredQuestions[currentIndex];
+  const question = filteredQuestions[];
   const buttons = choicesArea.querySelectorAll(".choice-button");
   const isCorrect = selectedIndex === question.answerIndex;
 
