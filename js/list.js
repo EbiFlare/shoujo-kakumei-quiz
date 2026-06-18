@@ -184,12 +184,25 @@ function createQuestionCard(question) {
   const meta = document.createElement("div");
   meta.className = "list-question-meta";
 
-  const metaItems = [
-    question.id,
-    difficultyLabels[question.difficulty] || question.difficulty,
-    question.genre,
-    ...(question.members || [])
-  ].filter(Boolean);
+  const metaItems = [];
+
+  if (question.id) {
+    metaItems.push(question.id);
+  }
+
+  if (question.difficulty) {
+    metaItems.push(difficultyLabels[question.difficulty] || question.difficulty);
+  }
+
+  if (question.genre) {
+    metaItems.push(question.genre);
+  }
+
+  if (question.members && question.members.length > 0) {
+    question.members.forEach(member => {
+      metaItems.push(member);
+    });
+  }
 
   metaItems.forEach(item => {
     const chip = document.createElement("span");
@@ -234,10 +247,11 @@ function createQuestionCard(question) {
 
   const contributor = document.createElement("p");
   contributor.className = "list-contributor";
+  contributor.hidden = true;
 
-  const links = createSourceLinks(question);
+  const questionChoices = question.choices || [];
 
-  question.choices.forEach((choice, index) => {
+  questionChoices.forEach((choice, index) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "choice-button";
@@ -265,8 +279,6 @@ function createQuestionCard(question) {
       if (question.contributor) {
         contributor.textContent = `作問：${question.contributor}`;
         contributor.hidden = false;
-      } else {
-        contributor.hidden = true;
       }
 
       resultArea.hidden = false;
@@ -279,12 +291,15 @@ function createQuestionCard(question) {
   resultArea.appendChild(explanation);
   resultArea.appendChild(contributor);
 
+  const links = createSourceLinks(question);
+
   if (links) {
     resultArea.appendChild(links);
   }
 
   body.appendChild(choices);
   body.appendChild(resultArea);
+
   details.appendChild(body);
 
   return details;
