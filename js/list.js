@@ -167,11 +167,147 @@ function renderList() {
   }
 
   filteredQuestions.forEach(question => {
-    questionList.appendChild((question));
+    const card = createQuestionCard(question);
+
+    if (card) {
+      questionList.appendChild(card);
+    }
   });
 }
 
 function createQuestionCard(question) {
+  const details = document.createElement("details");
+  details.className = "list-question-card";
+
+  const summary = document.createElement("summary");
+  summary.className = "list-question-summary";
+
+  const titleArea = document.createElement("div");
+  titleArea.className = "list-question-title-area";
+
+  const meta = document.createElement("div");
+  meta.className = "list-question-meta";
+
+  const metaItems = [];
+
+  if (question.id) {
+    metaItems.push(question.id);
+  }
+
+  if (question.difficulty) {
+    metaItems.push(difficultyLabels[question.difficulty] || question.difficulty);
+  }
+
+  if (question.genre) {
+    metaItems.push(question.genre);
+  }
+
+  if (question.members && question.members.length > 0) {
+    question.members.forEach(member => {
+      metaItems.push(member);
+    });
+  }
+
+  metaItems.forEach(item => {
+    const chip = document.createElement("span");
+    chip.className = "meta-chip";
+    chip.textContent = item;
+    meta.appendChild(chip);
+  });
+
+  const questionText = document.createElement("h2");
+  questionText.className = "list-question-title";
+  questionText.textContent = question.question;
+
+  titleArea.appendChild(meta);
+  titleArea.appendChild(questionText);
+
+  summary.appendChild(titleArea);
+  details.appendChild(summary);
+
+  const body = document.createElement("div");
+  body.className = "list-question-body";
+
+  if (question.image) {
+    const image = document.createElement("img");
+    image.className = "question-image";
+    image.src = question.image;
+    image.alt = question.question;
+    body.appendChild(image);
+  }
+
+  const choices = document.createElement("div");
+  choices.className = "list-choice-buttons";
+
+  const resultArea = document.createElement("div");
+  resultArea.className = "list-result-area";
+  resultArea.hidden = true;
+
+  const resultText = document.createElement("p");
+  resultText.className = "answer-result";
+
+  const explanation = document.createElement("p");
+  explanation.className = "list-explanation";
+
+  const contributor = document.createElement("p");
+  contributor.className = "list-contributor";
+  contributor.hidden = true;
+
+  const questionChoices = question.choices || [];
+
+  questionChoices.forEach((choice, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "choice-button";
+    button.textContent = choice;
+
+    button.addEventListener("click", () => {
+      const isCorrect = index === question.answerIndex;
+      const buttons = choices.querySelectorAll(".choice-button");
+
+      buttons.forEach((choiceButton, choiceIndex) => {
+        choiceButton.disabled = true;
+
+        if (choiceIndex === question.answerIndex) {
+          choiceButton.classList.add("is-correct");
+        }
+
+        if (choiceIndex === index && !isCorrect) {
+          choiceButton.classList.add("is-wrong");
+        }
+      });
+
+      resultText.textContent = isCorrect ? "正解！" : "不正解";
+      explanation.textContent = question.explanation || "";
+
+      if (question.contributor) {
+        contributor.textContent = `作問：${question.contributor}`;
+        contributor.hidden = false;
+      }
+
+      resultArea.hidden = false;
+    });
+
+    choices.appendChild(button);
+  });
+
+  resultArea.appendChild(resultText);
+  resultArea.appendChild(explanation);
+  resultArea.appendChild(contributor);
+
+  const links = createSourceLinks(question);
+
+  if (links) {
+    resultArea.appendChild(links);
+  }
+
+  body.appendChild(choices);
+  body.appendChild(resultArea);
+
+  details.appendChild(body);
+
+  return details;
+}function createQuestionCard(question) {
   const details = document.createElement("details");
   details.className = "list-question-card";
 
