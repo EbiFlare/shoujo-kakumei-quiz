@@ -868,3 +868,7 @@ a {
 .list-result-area[hidden] {
   display: none;
 }
+
+#question-image[hidden] {
+  display: none;
+}
