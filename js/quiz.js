@@ -60,13 +60,18 @@ function showQuestion() {
 }
 
 function showImage(question) {
-  if (question.image) {
-    questionImage.src = question.image;
+  const imageUrl =
+    typeof question.image === "string"
+      ? question.image.trim()
+      : "";
+
+  if (imageUrl) {
+    questionImage.src = imageUrl;
     questionImage.alt = question.question;
     questionImage.hidden = false;
   } else {
-    questionImage.src = "";
-    questionImage.alt = "";
+    questionImage.removeAttribute("src");
+    questionImage.removeAttribute("alt");
     questionImage.hidden = true;
   }
 }
